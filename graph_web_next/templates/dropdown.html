@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+				<head>
+								<meta charset="utf-8">
+								<title> Main Page </title>
+
+
+
+
+
+
+								<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+								<script src="http://d3js.org/d3.v4.min.js"></script>
+				</head>
+
+
+				<h2> Networked Graphs</h2>
+				<p> Select the node ID from the drop down to see graphs up to a depth of 5 </p>
+				<form action="{{url_for('select_ID')}}" method="POST">
+								<label for="input_ID">ID</label>
+								<input id="input_ID" type="text" />
+
+
+								<label for = "Node_Type">Node_Type</label>
+								<select id = "Node_Type">
+												<option value=Customer>Customer</option>
+												<option value=Phone>Phone</option>
+												<option value=ID_Card>ID_Card</option>
+								</select>
+
+
+								<input type='submit'  value='Submit'>
+
+
+
+
+
+
+
+
+
+				</form>
+
+
+
+
+
+				<label for="input ID">Depth</label>
+				<select id="select_ID" name="select_ID">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+
+
+				</select>
+
+
+
+
+
+				<input type=datetime id = "Start_Date" value="" placeholder="Start_Date"/>
+				<input type=datetime id ="End_Date" value = "" placeholder="End_Date"/>
+				<button id = "date">
+								Interval
+				</button>
+
+
+
+
+
+				<div class="ui-widget">
+								<input type = "text" id="node"/>
+								<button id ="search">
+												Search_Node
+								</button>
+				</div>
+
+
+
+
+
+
+				<h3>Filter</h3>
+
+
+				<input type="checkbox" name="checkb" id="Agent" value="Agent">
+				type=Agent
+				<br />
+
+				<input type="checkbox" name="checkb" id="Customer" value="Customer"> type=Customer
+				<br />
+
+				<input type="checkbox" name="checkb" id="Phone" value="Phone"> type=Phone
+				<br />
+
+				<input type="checkbox" name="checkb" id="ID_Card" value="ID_Card"> type=ID_Card
+				<br />
+
+  			<input type="range" min="0" value="1" max="1" step=".1"  id="strength_control" oninput="strength_change(value)">
+				<input type="range" min="-1000" value="0" max="1000" step="10"  id="charge_control" oninput="charge_change(value)">
+				<script src="{{url_for('static',filename='graph_view.js')}}"></script> 
+
+
+
+
+
+
+
+				<body>
+
+
+
+								<style>
+.links line {
+				stroke: #999;
+				stroke-opacity: 0.6;
+}
+								.nodes circle {
+												stroke: #fff;
+												stroke-width: 1.5px;
+								}
+								.nodes circle {
+												stroke: #fff;
+												stroke-width: 1.5px;
+								}
+								div.tooltip {
+												position: absolute;
+												background-color: white;
+												max-width: 200px;
+												height: auto;
+												padding: 1px;
+												border-style: solid;
+												border-radius: 4px;
+												border-width: 1px;
+												box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+												pointer-events: none;
+								}
+								</style>
+								<svg id="Network_graph" width="1360" height="1100"></svg>
+
+
+								<div id="graph"></div>
+
+
+				</body>
+</html>
