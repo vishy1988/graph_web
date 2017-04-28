@@ -1,6 +1,6 @@
 FROM debian
 
-MAINTAINER cchamp
+
 
 COPY certs/* /usr/share/ca-certificates/
 
